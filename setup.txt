@@ -1,0 +1,6 @@
+cmake build -G "MinGW Makefiles" ^ -DCMAKE_C_COMPILER=C:\Users\luka.jamieson\Downloads\w64devkit\bin\gcc.exe ^ -DCMAKE_CXX_COMPILER=C:\Users\luka.jamieson\Downloads\w64devkit\bin\g++.exe ^ -DCMAKE_MAKE_PROGRAM=C:\Users\luka.jamieson\Downloads\w64devkit\bin\mingw32-make.exe ^
+
+---> Proper line
+cmake -S . -B build -G "MinGW Makefiles" -DCMAKE_C_COMPILER=C:/Users/luka.jamieson/Downloads/w64devkit/bin/gcc.exe -DCMAKE_CXX_COMPILER=C:/Users/luka.jamieson/Downloads/w64devkit/bin/g++.exe -DCMAKE_MAKE_PROGRAM=C:/Users/luka.jamieson/Downloads/w64devkit/bin/mingw32-make.exe; cmake --build build
+
+cmake --build build
