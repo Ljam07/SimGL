@@ -100,23 +100,39 @@ private:
 class VertexBuffer
 {
 public:
-	virtual ~VertexBuffer() {}
-	virtual void Bind() const = 0;
-	virtual void Unbind() const = 0;
-	virtual const BufferLayout& GetLayout() const = 0;
-	virtual void SetLayout(const BufferLayout& layout) = 0;
-	virtual void SetData(const void* data, uint32_t size) = 0;
+	VertexBuffer(uint32_t size);
+	VertexBuffer(float* vertices, uint32_t size);
+
+	~VertexBuffer();
+
+	void Bind();
+	void Unbind();
+
+	const BufferLayout& GetLayout() const { return m_Layout; }
+	void SetLayout(const BufferLayout& layout);
+	void SetData(const void* data, uint32_t size);
+
+
 	static std::shared_ptr<VertexBuffer> Create(uint32_t size);
 	// static Ref<VertexBuffer> Create(uint32_t size);
 	static std::shared_ptr<VertexBuffer> Create(float* vertices, uint32_t size);
+private:
+	uint32_t m_RendererID;
+	BufferLayout m_Layout;
 };
 
 class IndexBuffer
 {
 public:
-	virtual ~IndexBuffer() {}
-	virtual void Bind() const = 0;
-	virtual void Unbind() const = 0;
-	virtual uint32_t GetCount() const = 0;
+	IndexBuffer(uint32_t* indices, uint32_t count);
+	IndexBuffer(uint32_t count);
+	~IndexBuffer();
+	void Bind();
+	void Unbind();
+	uint32_t GetCount();
 	static std::shared_ptr<IndexBuffer> Create(uint32_t* indices, uint32_t count);
+	
+private:
+	uint32_t m_RendererID;
+	uint32_t m_Count;
 };
